@@ -1,0 +1,32 @@
+
+#if u have too many subclass and too many if function follow this
+
+baseclass = type("baseclass",(object,),{})
+
+@classmethod
+def check1(self,mystr):
+
+    return mystr == "hai"
+
+
+
+@classmethod
+def check2(self,mystr):
+    print "hai"
+    return mystr == "python"
+
+
+
+c1 = type("c1",(baseclass,),{"x":5,"check":check1})
+c2 = type("c2",(baseclass,),{"x":30,"check":check2})
+
+def factory(mystr):
+    for cls in baseclass.__subclasses__():
+        if cls.check(mystr):
+            return cls()
+
+m=factory("hi")
+v=factory("python")
+
+
+
